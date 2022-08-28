@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, redirect, session, url_for, json, flash
 from Database.database import Database
+import os
 
 app = Flask(__name__)
-app.secret_key = 'supersecret'
+app.secret_key = os.environ.get('SECRET')
 
 @app.route("/", methods=["POST", "GET"])
 def home():
@@ -91,8 +92,9 @@ def test_forum(intensity):
     stats = {}
     db = Database()
     posts = db.get_posts(intensity)
-    for x in range(len(posts)):
-        posts[x]["user_id"] = db.get_username(posts[x]["user_id"])
+    if posts != None:
+        for x in range(len(posts)):
+            posts[x]["user_id"] = db.get_username(posts[x]["user_id"])
     
     if posts == None:
         stats["post_count"] = 0

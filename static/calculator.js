@@ -145,7 +145,7 @@ detect.addEventListener('click',(ev)=>{
         GenSug = "Overall Synposis: It seems that the amount of highly engaging extracurricular activies and hard classes you are taking this year likely will harm your overall performance in school." +
         " You will find it extremely difficulty to go through this school year and we suggest possible cutting down on certain classes/activities."
     }
-    else if((lecounter <=5 && lecounter>=2) && (counter <=3 && counter>=2)){
+    else if((lecounter <=5 && lecounter>=2) && (counter <=7 && counter>=2)){
         GenSug = "Overall Synposis: You are taking a high amount of hard classes and highly enaging extracurricular acitvities and this may dwindle your school performance. You may want to consider" 
         + " cutting down on certain acitvities/classes if you feel like this year may be too challenging. "
     }

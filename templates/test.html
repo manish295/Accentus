@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+  
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='test.css')}}"/>
+<!-- Create Form -->
+<div>
+<form id="form"  class="card my-4">
+    <h1 style="color:#05386B">Let's help you out</h1> 
+<p style="color:#05386B">By providing in the Classes and Activities you will do this school year, Accentus will dictate how intense your school year will be with its algorithm.</p>
+    <div id="store">
+        <div id="class" class="input-group">
+            <input id="Classe" name="class" class="form-control" placeholder="Enter class name">
+            <select id="vor" class="form-select form-control" name="difficulty" ng-model="option">
+                <option value="0">Easy</option>
+                <option value="1">Medium</option>
+                <option value="3">Hard</option>
+            </select>
+            <button id="delete" class="form-control btn btn-danger" disabled>Delete</button>
+        </div>
+    </div>
+    <button style ="background-color: #05386B; color: #EDF5E1;"id="temple" class="btn btn-primary mt-2 mb-2">Add Class</button>
+        <div id="storea">
+            <div id="active" class="input-group">
+                <input id="Teets" name="class" class="form-control" placeholder="Enter activity name">
+                <select id="act" class="form-select form-control" name="difficulty" ng-model="option">
+                    <option value="-1">Fun/Recreational</option>
+                    <option value="0.5">Low Intensity Club/Organizing</option>
+                    <option value="1">Highly Engaging Club/Organization</option>
+                    <option value="1">Low Frequency/Intensity Sport</option>
+                    <option value="2">High Frequency/Intensity Sport</option>
+                </select>
+                <br>
+                <button id="delete" class="form-control btn btn-danger" disabled>Delete</button>
+            </div>
+        </div>
+        <button style ="background-color: #05386B; color: #EDF5E1;"id="templea" class="btn btn-primary mt-2">Add Activity</button>
+    <br>
+    <!-- Multi-line Text Input Control -->
+    <button id="detect" type="submit" value="submit" class="btn btn-info mt-2">
+        Detect Stress Now!
+    </button>
+</form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{{ url_for('static', filename='calculator.js')}}"></script>
+{% endblock %}

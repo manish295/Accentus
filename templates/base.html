@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %} Accentus {% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>	
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='accentus1.png') }}">
+
+  </head>
+  <body style="background: #333333;">
+    {% block navbar %}
+        <nav class="navbar navbar-expand-lg navbar-dark  p-3 navbar-fixed-top" style="background: #05386B">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="/">
+                <img src="{{url_for('static', filename='accentus1.png')}}" width="30" height="30" class="rounded-pill">
+                Accentus
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+          
+              <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto " id="navigation">
+                  <li class="nav-item">
+                    <a class="nav-link mx-2" aria-current="page" href="/">Detect Intensity</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link mx-2" aria-current="page" href="/forum">Forum</a>
+                  </li>
+                  <li class="dropdown">
+                    <a class="nav-link mx-2 dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Account
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                      <li><a class="dropdown-item" href="/logout">Log out</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul class="navbar-nav ms-auto d-none d-lg-inline-flex">
+                  <li class="nav-item mx-2">
+                  </li>
+                  <li class="nav-item mx-2">
+                  </li>
+                  <li class="nav-item mx-2">
+                  </li>
+                  <li class="nav-item mx-2">
+                  </li>
+                  <li class="nav-item mx-2">
+                </li>
+                <li class="nav-item mx-2">
+                </li>
+                <li class="nav-item mx-2">
+                </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    {% endblock %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+          <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+            {% if messages %}
+              {% for category, message in messages %}
+              <div class="alert alert-{{category}}" id="success-alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <strong>{{message}}</strong>
+              </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+    {% block content %}
+    {% endblock %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -55,6 +55,10 @@ def register():
     
     return render_template("register.html")
 
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
 @app.route("/logout")
 def logout():
     session.pop("user", None)
@@ -62,7 +66,7 @@ def logout():
 
 @app.route("/profile")
 def profile():
-    if "user_data" not in session:
+    if "user_data" not in session or "user" not in session:
         return redirect(url_for("home"))
     user_data = session["user_data"]
     classes = user_data['classes']
@@ -73,10 +77,11 @@ def profile():
     db = Database()
     username = db.get_username(session["user"])
     db.close()
+    intensity = session["intensity"]
     # print(user_data)
     #classes = user_data["UserData"]["classes"]
     #activities = user_data["UserData"]["activities"]
-    return render_template("profile.html", username=username, classes=classes, activities=activities, class_suggestions=class_suggestions, activity_suggestions=activity_suggestions, synopsis=synopsis)
+    return render_template("profile.html", username=username, classes=classes, activities=activities, class_suggestions=class_suggestions, activity_suggestions=activity_suggestions, synopsis=synopsis, intensity=intensity)
 
 
 @app.route("/forum/<intensity>")

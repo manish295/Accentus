@@ -2,49 +2,47 @@
 
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='profile.css')}}"/>
-<div class="container rounded bg-white mt-5 mb-5">
+<div style="background: #05386B;" class="container rounded  mt-5 mb-5">
     <div class="row">
         <div class="col-md-3 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                <h1 class="mt-5">{{username}}</h1>
-                <h4 class="text-warning">Total Posts:</h4>
-                <h4 class="text-black">{{total}}</h4>
-                <!-- <h4 class="text-warning">Published Sets:</h4>
-                <h4 class="text-black">{{published}}</h4>
-                <h4 class="text-warning">Unpublished Sets:</h4>
-                <h4 class="text-black">{{unpublished}}</h4> -->
+                <h1 class="mt-5 text-white">Welcome {{username}}!</h1>
             </div>
         </div>
         <div class="col border-right">
             <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Profile</h4>
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                    <h4 class="text-right text-white">Here you can find your Classes, Intensity, and Suggestions:</h4>
                 </div>
                 <form method="POST" autocomplete="off">
                     <div class="row mt-2">
                         <div class="col-md-12">
-                            <label class="labels">Classes</label>
+                            <label class="labels text-white">Intensity</label>
+                            <h5 class="text-right text-white">Current Intensity: {{intensity}}</h5>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels text-white">Classes</label>
                             {% for class in classes %}
-                                <p>Class: {{class['class']}}, Difficulty: {{class['difficultiy']}}</p>
+                                <p class="text-white"><b>Class: {{class['class']}}, Difficulty: {{class['difficultiy']}}</b></p>
                             {% endfor %}
                         </div>
                         <div class="col-md-12">
-                            <label class="labels">Activities</label>
+                            <label class="labels text-white">Activities</label>
                             {% for activity in activities %}
-                                <p>Activity: {{activity['activity']}}, Category: {{activity['category']}}</p>
+                                <p class="text-white"><b> Activity: {{activity['activity']}}, Category: {{activity['category']}}</b></p>
                             {% endfor %}
                         </div>
                         <div class="col-md-12">
-                            <label class="labels">Activity Suggestions</label>
-                            <p>{{activity_suggestions}}</p>
+                            <label class="labels text-white">Activity Suggestions</label>
+                            <p class="text-white"><b>{{activity_suggestions}}</b></p>
                         </div>
                         <div class="col-md-12">
-                            <label class="labels">Class Suggestions</label>
-                            <p>{{class_suggestions}}</p>
+                            <label class="labels text-white">Class Suggestions</label>
+                            <p class="text-white"><b>{{class_suggestions}}</b></p>
                         </div>
                         <div class="col-md-12">
-                            <label class="labels">Synopsis</label>
-                            <p>{{synopsis}}</p>
+                            <label class="text-white">Synopsis</label>
+                            <p class="text-white"><b>{{synopsis}}</b></p>
                         </div>
 
                     </div>

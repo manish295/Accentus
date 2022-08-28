@@ -4,14 +4,13 @@ const div = document.querySelector("#class");
 const store = document.querySelector("#store");
 const detect = document.querySelector("#detect");
 const templea = document.querySelector("#templea");
-const deleteb = document.querySelectorAll("#delete");
 
-for(deletes of deleteb){
-deletes.addEventListener('click',(ev)=>{
-    ev.preventDefault();
-    deleteb.parentElement.remove();
-})
-}
+// for(deletes of deleteb){
+// deletes.addEventListener('click',(ev)=>{
+//     ev.preventDefault();
+//     deleteb.parentElement.remove();
+// })
+
 
 button.addEventListener('click',(ev)=>{ //For Classes
         ev.preventDefault();
@@ -32,18 +31,19 @@ button.addEventListener('click',(ev)=>{ //For Classes
 
 templea.addEventListener('click',(ev)=>{ //Activities
     ev.preventDefault();
-    const clone = document.querySelector("#active").cloneNode(true);
-    document.querySelector("#active").querySelector("#delete").disabled = false;
-    document.querySelector("#active").querySelector("#delete").addEventListener('click',(ev)=>{
+    let div = document.querySelector("#active")
+    const clone = div.cloneNode(true);
+    div.querySelector("#deletea").disabled = false;
+    div.querySelector("#deletea").addEventListener('click',(ev)=>{
         ev.preventDefault();
-        document.querySelector("#active").querySelector("#delete").parentElement.remove();
+        div.querySelector("#deletea").parentElement.remove();
     })
     document.querySelector("#storea").appendChild(clone);
     clone.querySelector("#Teets").value = null;
-    clone.querySelector("#delete").disabled = false;
-    clone.querySelector("#delete").addEventListener('click',(ev)=>{
+    clone.querySelector("#deletea").disabled = false;
+    clone.querySelector("#deletea").addEventListener('click',(ev)=>{
         ev.preventDefault();
-        clone.querySelector("#delete").parentElement.remove();
+        clone.querySelector("#deletea").parentElement.remove();
     })
 });
 
@@ -115,19 +115,21 @@ detect.addEventListener('click',(ev)=>{
         }
     }
 
-console.log(asctives);
+
     if(counter <5 && counter>=3){
         suggestions = `You are taking numerous Hard Classes that include: ${classes}. This may increase the diffuclty to pass through this school year.`
     }
     else if(counter>=5){
-         suggestions = `You are taking a significant amount of Hard Classes that include: ${classes}. You may want to have extra activities that allow you to relax or reduce
+         suggestions = `You are taking a significant amount of Hard Classes that include: ${classes}. You may want to have fewer activites or 
         the amount of hard classes you take.`
     }
     else{
-        suggestions = `The Hard Classes you are taking are: ${classes} You are not taking a significant amount of these classes and therefore should have a lighter school year.`
+        suggestions = `The Hard Classes you are taking are: ${classes}. You are not taking a significant amount of these classes and therefore should have a lighter school year.`
     }
 
     //Suggestionss
+    console.log(lecounter);
+    console.log(counter);
     if(lecounter <5 && lecounter>=3){
         activisuggestions = `You are taking a lot of highly engaging that include: ${asctives}. This may hinder performance in your classes due to the time filled up after school.`
     }
@@ -136,37 +138,43 @@ console.log(asctives);
         class and extracurricular activies for your school year.`
     }
     else{
-        activisuggestions = `The only Highly Engaging Activies you are doing is: ${asctives} You should not have a difficult time balancing school with these activities and aren't a big factor to your
-        school intensity..`
+        activisuggestions = `The only Highly Engaging Activies you are doing is: ${asctives}. You should not have a difficult time balancing school with these activities and they aren't a big factor to your school intensity.`
     }
     GenSug = ""
-    if(lecounter >=4 && counter>=3){
+    if(lecounter >=5 && counter>=4){
         GenSug = "Overall Synposis: It seems that the amount of highly engaging extracurricular activies and hard classes you are taking this year likely will harm your overall performance in school." +
-        "You will find it extremely difficulty to go through this school year and we suggest possible cutting down on certain classes/activities."
+        " You will find it extremely difficulty to go through this school year and we suggest possible cutting down on certain classes/activities."
     }
-    else if((lecounter <4 && lecounter>=3) && (counter <3 && counter>=2)){
+    else if((lecounter <=5 && lecounter>=2) && (counter <=3 && counter>=2)){
         GenSug = "Overall Synposis: You are taking a high amount of hard classes and highly enaging extracurricular acitvities and this may dwindle your school performance. You may want to consider" 
         + " cutting down on certain acitvities/classes if you feel like this year may be too challenging. "
     }
+    else if(lecounter >=3 && counter<2){ //Lots of activities but no classes
+        GenSug = "Overall Synposis: You are taking a lot of highly intensive extracurricular activities but few hard classes. While this is fine, you may consider adding more classes to increase overall workload for this year or reducing the amount of activities during the year "
+    }
+    else if(lecounter <2 && counter>=3){ //More classes less activities
+        GenSug = "Overall Synopsis: You are taking a lot of highly intensive classes with less activities. As a result, you may be too focused in academics without giving regard for activities, which may harm other aspects of learning. Consider taking fewer/less difficult classes so it may allow time for more extracurricular activities."
+    }
     else{
-        GenSug = "Overall Synposis: You do not have a too many difficult hard classes and highly engaing extracurricular activities. As a result, you should be able to focus on" +
+        GenSug = "Overall Synposis: You do not have too many difficult hard classes and highly engaing extracurricular activities. As a result, you should be able to focus on" +
         " more on certain classes/activities and may consider even adding more load for this school year if you find it too easy. "
     }
+    console.log(GenSug);
 
-//     let data = {
-//         classes: classi,
-//         activities: activia,
-//         ClassSuggestions: suggestions,
-//         ActvitySuggestions: activisuggestions,
-//         Synposis: GenSug
-//     }
-//    axios.post('/tag-user',{
-//     Intensity: check(stress),
-//     UserData: data
-//    }).then( function(response) {
-//      window.location = "/forum/"+check(stress)
+    let data = {
+        classes: classi,
+        activities: activia,
+        ClassSuggestions: suggestions,
+        ActvitySuggestions: activisuggestions,
+        Synposis: GenSug
+    }
+   axios.post('/tag-user',{
+    Intensity: check(stress),
+    UserData: data
+   }).then( function(response) {
+     window.location = "/profile"
 
-//    })
+   })
 
 })
 

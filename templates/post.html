@@ -5,21 +5,19 @@
 <div class="container-fluid mt-100">
     <div class="row">
         <div class="col-md-12">
-            <div class="card mb-4">
+            <div class="card mb-4 mt-3">
                 <div class="card-header">
-                    <div class="media flex-wrap w-100 align-items-center"> <img src="https://i.imgur.com/iNmBizf.jpg" class="d-block ui-w-40 rounded-circle" alt="">
-                        <div class="media-body ml-3"> <a href="javascript:void(0)" data-abc="true">{{name}}</a>
-                            <div class="text-muted">{{title}}</div>
+                    <div class="media flex-wrap w-100 align-items-center"> <img src="" class="d-block ui-w-40 rounded-circle" alt="">
+                        <div> <h4><b>{{name}} Wrote: </b></h4>
+                            <h3><div class="">{{title}}</div></h3>
                         </div>
                         <div class="text-muted small ml-3">
-                            <!-- <div>Member since <strong>01/1/2019</strong></div>
-                            <div><strong>134</strong> posts</div> -->
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <p> {{full_desc}}
-                    </p>
+                    <h5> {{full_desc}}
+                    </h5>
                 </div>
                     <div class="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3">
                         <div class="px-4 pt-3"> <a href="javascript:void(0)" class="text-muted d-inline-flex align-items-center align-middle" data-abc="true"> <i class="fa fa-heart text-danger"></i></a> <span class="text-muted d-inline-flex align-items-center align-middle ml-4"> <i class="fa fa-eye text-muted fsize-3"></i></span> </span> </div>
@@ -35,11 +33,6 @@
                                         <div class="d-flex flex-row align-items-center commented-user">
                                             <h5 class="mr-2">{{comment['name']}}</h5><span class="dot mb-1"></span></div>
                                         <div class="comment-text-sm"><span>{{comment['comment']}}</span></div>
-                                        <!-- <div
-                                            class="reply-section">
-                                            <div class="d-flex flex-row align-items-center voting-icons"><i class="fa fa-sort-up fa-2x mt-3 hit-voting"></i><i class="fa fa-sort-down fa-2x mb-3 hit-voting"></i><span class="ml-2">10</span><span class="dot ml-2"></span>
-                                                <h6 class="ml-2 mt-1">Reply</h6>
-                                            </div> -->
                                     </div>
                                     {% endfor %}
                             {% endif %}

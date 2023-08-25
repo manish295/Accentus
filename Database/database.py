@@ -191,9 +191,6 @@ class Database:
                 p.append(dicts)
             
 
-            #[{"post_id":3, "title": "balls"}, {post_id}]
-            #result = results[0]
-            #result = result[0]
             return p
 
         except Exception as err:
